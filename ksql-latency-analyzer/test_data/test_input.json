@@ -1,0 +1,16 @@
+{
+    "inputs": [
+            {"topic": "connect_latency", "timestamp": 0, "value": {"correlation_id": "corr1", "connect_pipeline_id": "conn1", "timestamp_type": "source", "timestamp": 1695100980}, "key": "corr1"},
+            {"topic": "connect_latency", "timestamp": 0, "value": {"correlation_id": "corr1", "connect_pipeline_id": "conn1", "timestamp_type": "sink", "timestamp": 1695100985}, "key": "corr1"},
+            {"topic": "connect_latency", "timestamp": 0, "value": {"correlation_id": "corr2", "connect_pipeline_id": "conn1", "timestamp_type": "source", "timestamp": 1695100990}, "key": "corr2"},
+            {"topic": "connect_latency", "timestamp": 0, "value": {"correlation_id": "corr2", "connect_pipeline_id": "conn1", "timestamp_type": "broker", "timestamp": 1695100992}, "key": "corr2"},
+            {"topic": "connect_latency", "timestamp": 0, "value": {"correlation_id": "corr2", "connect_pipeline_id": "conn1", "timestamp_type": "sink", "timestamp": 1695100995}, "key": "corr2"},
+            {"topic": "connect_latency", "timestamp": 0, "value": {"correlation_id": "corr3", "connect_pipeline_id": "conn1", "timestamp_type": "source", "timestamp": 1695101000}, "key": "corr3"},
+            {"topic": "connect_latency", "timestamp": 0, "value": {"correlation_id": "corr3", "connect_pipeline_id": "conn1", "timestamp_type": "consume", "timestamp": 1695101004}, "key": "corr3"},
+            {"topic": "connect_latency", "timestamp": 0, "value": {"correlation_id": "corr3", "connect_pipeline_id": "conn1", "timestamp_type": "sink", "timestamp": 1695101005}, "key": "corr3"},
+            {"topic": "connect_latency", "timestamp": 0, "value": {"correlation_id": "corr4", "connect_pipeline_id": "conn1", "timestamp_type": "source", "timestamp": 1695101010}, "key": "corr4"},
+            {"topic": "connect_latency", "timestamp": 0, "value": {"correlation_id": "corr4", "connect_pipeline_id": "conn1", "timestamp_type": "broker", "timestamp": 1695101012}, "key": "corr4"},
+            {"topic": "connect_latency", "timestamp": 0, "value": {"correlation_id": "corr4", "connect_pipeline_id": "conn1", "timestamp_type": "consume", "timestamp": 1695101014}, "key": "corr4"},
+            {"topic": "connect_latency", "timestamp": 0, "value": {"correlation_id": "corr4", "connect_pipeline_id": "conn1", "timestamp_type": "sink", "timestamp": 1695101015}, "key": "corr4"}
+          ]
+  }

@@ -1,0 +1,50 @@
+---
+version: '2'
+
+services:
+  ksqldb-server:
+    image: platformatorylabs/latency-analyzer:1.0.0
+    hostname: ksqldb-server
+    container_name: ksqldb-server
+    ports:
+      - "8088:8088"
+    environment:
+      KSQL_LISTENERS: http://0.0.0.0:8088
+      KSQL_BOOTSTRAP_SERVERS: $BOOTSTRAP_SERVERS
+      KSQL_SASL_JAAS_CONFIG: $KAFKA_SASL_JAAS_CONFIG
+      KSQL_SECURITY_PROTOCOL: SASL_SSL
+      KSQL_SASL_MECHANISM: PLAIN
+      KSQL_KSQL_INTERNAL_TOPIC_REPLICAS: 3
+      KSQL_KSQL_SINK_REPLICAS: 3
+      KSQL_KSQL_STREAMS_REPLICATION_FACTOR: 3
+      KSQL_KSQL_LOGGING_PROCESSING_TOPIC_REPLICATION_FACTOR: 3
+      # KSQL_KSQL_LOGGING_PROCESSING_STREAM_AUTO_CREATE: "true"
+      # KSQL_KSQL_LOGGING_PROCESSING_TOPIC_AUTO_CREATE: "true"
+      KSQL_KSQL_STREAMS_NUM_STREAM_THREADS: 4
+      KSQL_KSQL_SCHEMA_REGISTRY_URL: $KAFKA_VALUE_CONVERTER_SCHEMA_REGISTRY_URL
+      KSQL_KSQL_SCHEMA_REGISTRY_BASIC_AUTH_CREDENTIALS_SOURCE: USER_INFO
+      KSQL_KSQL_SCHEMA_REGISTRY_BASIC_AUTH_USER_INFO: $KAFKA_VALUE_CONVERTER_SCHEMA_REGISTRY_BASIC_AUTH_USER_INFO
+      KSQL_KSQL_QUERIES_FILE: /home/appuser/queries.sql
+      KSQL_INPUT_TOPICS: $TELEMETRY_TOPIC
+
+  kafka-prom-push:
+    image: platformatorylabs/kafka-prom-push:1.0.0
+    environment:
+      KAFKA_TOPIC: final_latency_data
+      PUSH_GATEWAY_ENDPOINT: $PROMETHEUS_ENDPOINT
+      BOOTSTRAP_SERVERS: $BOOTSTRAP_SERVERS
+      KAFKA_SASL_JAAS_CONFIG: $KAFKA_SASL_JAAS_CONFIG
+      SCHEMA_REGISTRY_URL: $KAFKA_VALUE_CONVERTER_SCHEMA_REGISTRY_URL
+      SCHEMA_REGISTRY_BASIC_AUTH_USER_INFO: $KAFKA_VALUE_CONVERTER_SCHEMA_REGISTRY_BASIC_AUTH_USER_INFO
+      CONSUMER_GROUP_ID: kfk-prom-psh
+    depends_on:
+      - ksqldb-server
+
+  ksqldb-test-runner:
+    image: confluentinc/ksqldb-cli:0.29.0
+    container_name: ksqldb-test-runner
+    entrypoint: /bin/bash /home/appuser/run_test.sh
+    tty: true
+    volumes:
+      - ./ksql-latency-analyzer/scripts/run_test.sh:/home/appuser/run_test.sh
+      - ./ksql-latency-analyzer/test_data:/home/appuser/test_data

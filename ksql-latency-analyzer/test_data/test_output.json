@@ -1,0 +1,8 @@
+{
+    "outputs": [
+            {"topic": "final_latency_data", "timestamp": 0, "value": {"CORRELATION_ID": "corr1", "CONNECT_PIPELINE_ID": "conn1", "E2E_LATENCY": 5, "SOURCE_PRODUCE_LATENCY": null, "SINK_CONSUME_LATENCY": null, "SINK_FLUSH_LATENCY": null}, "key": {"CORRELATION_ID": "corr1", "CONNECT_PIPELINE_ID": "conn1"}},
+            {"topic": "final_latency_data", "timestamp": 0, "value": {"CORRELATION_ID": "corr2", "CONNECT_PIPELINE_ID": "conn1", "E2E_LATENCY": 5, "SOURCE_PRODUCE_LATENCY": 2, "SINK_CONSUME_LATENCY": null, "SINK_FLUSH_LATENCY": null}, "key": {"CORRELATION_ID": "corr2", "CONNECT_PIPELINE_ID": "conn1"}},
+            {"topic": "final_latency_data", "timestamp": 0, "value": {"CORRELATION_ID": "corr3", "CONNECT_PIPELINE_ID": "conn1", "E2E_LATENCY": 5, "SOURCE_PRODUCE_LATENCY": null, "SINK_CONSUME_LATENCY": null, "SINK_FLUSH_LATENCY": 1}, "key": {"CORRELATION_ID": "corr3", "CONNECT_PIPELINE_ID": "conn1"}},
+            {"topic": "final_latency_data", "timestamp": 0, "value": {"CORRELATION_ID": "corr4", "CONNECT_PIPELINE_ID": "conn1", "E2E_LATENCY": 5, "SOURCE_PRODUCE_LATENCY": 2, "SINK_CONSUME_LATENCY": 2, "SINK_FLUSH_LATENCY": 1}, "key": {"CORRELATION_ID": "corr4", "CONNECT_PIPELINE_ID": "conn1"}}
+          ]
+  }

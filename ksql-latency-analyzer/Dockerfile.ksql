@@ -1,0 +1,6 @@
+FROM confluentinc/ksqldb-server:0.29.0
+
+# Copy your bash script to the container
+COPY latency_analyzer_ksql_template.sh /home/appuser/latency_analyzer_ksql_template.sh
+
+CMD ["/bin/bash", "-c", "/home/appuser/latency_analyzer_ksql_template.sh $KSQL_INPUT_TOPICS"]
